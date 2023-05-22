@@ -41,6 +41,9 @@
         <el-menu-item index="/admin1" class="el-icon-user" @click="pushAdmin1"
           >用户管理
         </el-menu-item>
+        <el-menu-item index="/adminvip" class="el-icon-user" @click="pushAdminVIP"
+          >VIP用户管理
+        </el-menu-item>
       </el-sub-menu>
     </el-menu>
   </div>
@@ -86,6 +89,18 @@ export default {
       if (this.user.role == "超级管理员") {
         this.$router.push({
           path: "/admin1",
+        });
+      } else {
+        this.$message({
+          type: "error",
+          message: "没有权限！",
+        });
+      }
+    },
+    pushAdminVIP() {
+      if (this.user.role == "超级管理员") {
+        this.$router.push({
+          path: "/adminvip",
         });
       } else {
         this.$message({
